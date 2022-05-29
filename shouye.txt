@@ -1,0 +1,46 @@
+【远程代码】
+import "java.io.*"
+    file,err=io.open("sdcard/zhongle/yuedu/fuli.xml")
+    -- print()
+    if err==nil then
+      判断=io.open("sdcard/zhongle/yuedu/fuli.xml"):read("*a")
+
+      if 判断=="有" then
+        import"cjson"
+        url="https://wds.ecsxs.com/221832.json"
+        --ua="Mozilla/5.0 (Linux；； Android 11；； Mi 10 Pro) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.152 Mobile Safari/537.36"
+        Http.get(url,function(code,content,ua)
+
+          if code==200 and content then
+            json=cjson.decode(content)
+
+
+
+
+            表={}
+
+            for i=1,#json.links do
+
+              table.insert(表,json.links[i])
+
+            end
+
+            rrxs.setText("小说已更新到"..#表.."部")
+
+          end
+        end)
+
+        rrxs.onClick=function()
+
+          进入子页面("xsmxs")
+        end
+
+       else
+
+        rr.setVisibility(View.GONE)
+
+      end
+     else
+      rr.setVisibility(View.GONE)
+    end
+【远程代码】

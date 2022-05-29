@@ -250,7 +250,7 @@ recycler_view.adapter=adapter
 
 
 
-Http.get("https://wds.ecsxs.com/226497.txt",function(code,content)
+Http.get("https://zl-nine.vercel.app/manhuazhuye.txt",function(code,content)
   if code==200 then
     名字=content:gmatch([[【名字】(.-)【名字】]])
     图片=content:gmatch([[【图片】(.-)【图片】]])

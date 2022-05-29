@@ -7,6 +7,13 @@
 -- @other 本模版已为你编写好基础事件，建议在阅读注释并理解相关参数意义后再进行扩展编写
 --
 
+--
+-- @author 寒歌
+-- @description Main是应用的主模块，其中注册了应用运行中UI事件的回调、Activity生命周期的回调等
+-- 你也可以在此编写启动事件代码，或控制应用运行逻辑、自定义应用UI等等。
+-- @other 本模版已为你编写好基础事件，建议在阅读注释并理解相关参数意义后再进行扩展编写
+--
+
 -- ****默认导入包****
 require "import"
 import "android.os.*"
@@ -65,7 +72,7 @@ activity.overridePendingTransition(android.R.anim.fade_in,android.R.anim.fade_ou
       {
         LinearLayout,--线性布局
         orientation='vertical',--方向
-        layout_width='80%w',--宽度
+        layout_width='40%w',--宽度
         layout_height='fill',--高度
         --background='#FFF44336',--背景颜色或图片路径
         {
@@ -74,10 +81,31 @@ activity.overridePendingTransition(android.R.anim.fade_in,android.R.anim.fade_ou
           layout_height='fill';--文本高度
           gravity='center|left';--重力属性
           textColor='#ff000000';--文字颜色
-          text='涩涩世界';--显示的文字
+          text='肉肉世界';--显示的文字
           textSize='20sp';--文字大小
           layout_marginLeft="10dp";
           --textStyle="bold",
+        };
+        --文本
+      };
+      --左边
+      {
+        LinearLayout,--线性布局
+        orientation='vertical',--方向
+        layout_width='40%w',--宽度
+        layout_height='fill',--高度
+        --background='#FFF44336',--背景颜色或图片路径
+        {
+          TextView;--文本控件
+          layout_width='fill';--文本宽度
+          layout_height='fill';--文本高度
+          gravity='center|left';--重力属性
+          textColor='#ff000000';--文字颜色
+          text='';--显示的文字
+          textSize='15sp';--文字大小
+          layout_marginLeft="10dp";
+          --textStyle="bold",
+          id="shu";
         };
         --文本
       };
@@ -106,12 +134,13 @@ activity.overridePendingTransition(android.R.anim.fade_in,android.R.anim.fade_ou
             radius='10dp';--圆角
             {
               ImageView;--图片控件
-              src='share.png';--图片路径
+              src='history.png';--图片路径
               layout_width='20dp';--图片宽度
               layout_height='20dp';--图片高度
               --scaleType='fitXY';--图片显示类型
               layout_gravity="center|left";
               layout_margin="8dp";
+              id="ls";
             };
             --左图
             {
@@ -262,61 +291,66 @@ recycler_view.adapter=adapter
 
 
 
-
-page=1
-function 加载(page)
-
-  url="https://www.rourouwu10.com/list1/"..page.."/"
-  Http.get(url,"GBK",function(code,content)
-
-    if code==200 and content then
-
-      总表={}
-      截取=content:match('rec_rullist">(.-)</div>')
-      卡片=截取:gmatch('three">(.-)</li>')
-
-      for i in 卡片 do
-
-        table.insert(总表,i)
-
-      end
+module("Base64", package.seeall)
+--Android Base64编码工具类
+--把文件复制到工程目录 or 把函数复制到你想要的地方
+function encode(data)--编码
+  local Base64=luajava.bindClass("android.util.Base64")
+  return Base64.encodeToString(String(data).getBytes(),Base64.NO_WRAP);
+end
+function decode(data)--解码
+  local Base64=luajava.bindClass("android.util.Base64")
+  return String(Base64.decode(data,Base64.DEFAULT)).toString()
+end
 
 
-      for k,v in ipairs(总表)
+import"cjson"
+url="https://wds.ecsxs.com/221832.json"
+--ua="Mozilla/5.0 (Linux；； Android 11；； Mi 10 Pro) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.152 Mobile Safari/537.36"
+Http.get(url,function(code,content,ua)
 
-        标题=v:match('">(.-)</a>')
-        链接=v:match('<a href="(.-)">')
-
-        if 标题:find("娘")or 标题:find("孕") or 标题:find("女")or 标题:find("小姐")or 标题:find("公主") then
-
-
-         else
-
-          adapter.add{
-
-            bt=标题,
-            lj=链接
-          }
+  if code==200 and content then
+    json=cjson.decode(content)
 
 
 
-        end
 
-      end
+    表={}
+
+    for i=1,#json.links do
+
+      table.insert(表,json.links[i])
+
+    end
+
+    shu.setText("当前资源数:"..#表)
+    for k,v in ipairs(表) do
+
+      名字=decode(v.name)
+      章节=v.name
+      内容=decode(v.content)
+
+      adapter.add{
+        bt=名字,
+        lj=内容
+      }
+
+
     end
     刷新.getRefreshFooter().setAnimatingColor(0xFF73ABFE)
-  end)
-
-end
-加载(page)
-
-
-
-  function 写入文件(路径,内容)
-    import "java.io.File"
-    f=File(tostring(File(tostring(路径)).getParentFile())).mkdirs()
-    io.open(tostring(路径),"w"):write(tostring(内容)):close()
   end
+end)
+
+
+
+
+function 写入文件(路径,内容)
+  import "java.io.File"
+  f=File(tostring(File(tostring(路径)).getParentFile())).mkdirs()
+  io.open(tostring(路径),"w"):write(tostring(内容)):close()
+end
+
+
 
 
 
@@ -327,16 +361,21 @@ adapter.onItemClick=function(
   pos--点击的位置索引
   )
 
- itemData = adapter.Data[pos+1]
+  itemData = adapter.Data[pos+1]
 
 
 
-  value=itemData.lj
 
   名字=itemData.bt
-  --print(名字) 
-  写入文件("sdcard/zhongle/yuedu/smmz.txt",名字)  
- 进入子页面("rrlb",{value})
+  内容=itemData.lj
+
+  --print(名字)
+  value="A"..名字.."A".."B"..内容.."B"
+  --  print(value)
+  写入文件("sdcard/zhongle/yuedu/xsmxs.txt",名字)
+  写入文件("sdcard/zhongle/yuedu/"..名字.."xsmxs.txt",value)
+  写入文件("sdcard/zhongle/yuedu/xsmxsmz.txt",名字)
+  进入子页面("xsmyd",{value})
 
 
 
@@ -349,9 +388,8 @@ end
 .setOnRefreshLoadMoreListener({
   onLoadMore=function(view)
 
-    page=page+1
-    加载(page)
     task(2000,function()
+      print("加载完成")
       刷新.finishLoadMore()
     end)
   end})
@@ -359,8 +397,13 @@ end
 
 
 tc.onClick=function()
-  
- 退出页面() 
+
+  退出页面()
+
+end
+
+ls.onClick=function()
+进入子页面("xsmls")  
   
   end
 【远程代码】

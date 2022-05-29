@@ -1,0 +1,1912 @@
+
+【远程代码】
+
+
+require "import"
+import "android.widget.*"
+import "android.view.View"
+import "androidx.viewpager.widget.ViewPager"
+import "com.google.android.material.card.MaterialCardView"
+activity.overridePendingTransition(android.R.anim.fade_in,android.R.anim.fade_out)
+local layout=
+{
+  LinearLayout,--线性布局
+  orientation="vertical",--布局方向
+  layout_width="fill",--布局宽度
+  layout_height="fill",--布局高度
+  {
+    LinearLayout,--线性布局
+    orientation='vertical',--方向
+    layout_width='fill',--宽度
+    layout_height='wrap',--高度
+    background='#ffffffff',--背景颜色或图片路径
+    {
+      LinearLayout,--线性布局
+      orientation='horizontal',--方向
+      layout_width='fill',--宽度
+      layout_height='fill',--高度
+      background='',--背景颜色或图片路径
+      {
+        LinearLayout,--线性布局
+        orientation='vertical',--方向
+        layout_width='80%w',--宽度
+        layout_height='fill',--高度
+        --background='#FFF44336',--背景颜色或图片路径
+        {
+          TextView;--文本控件
+          layout_width='fill';--文本宽度
+          layout_height='fill';--文本高度
+          gravity='center|left';--重力属性
+          textColor='#ff000000';--文字颜色
+          text='直播聚合';--显示的文字
+          textSize='20sp';--文字大小
+          layout_marginLeft="10dp";
+          textStyle="bold",
+        };
+        --文本
+      };
+      --左边
+      {
+        LinearLayout,--线性布局
+        orientation='vertical',--方向
+        layout_width='20%w',--宽度
+        layout_height='fill',--高度
+        background='',--背景颜色或图片路径
+        {
+          LinearLayout,--线性布局
+          orientation='horizontal',--方向
+          layout_width='fill',--宽度
+          layout_height='fill',--高度
+          background='',--背景颜色或图片路径
+          {
+            MaterialCardView;--卡片控件
+            layout_margin='8dp';--边距
+            layout_gravity='center';--重力
+            --左:left 右:right 中:center 顶:top 底:bottom
+            elevation='0dp';--阴影
+            layout_width='fill';--宽度
+            layout_height='fill';--高度
+            CardBackgroundColor='#FFF5F6F8';--颜色
+            radius='10dp';--圆角
+            {
+              ImageView;--图片控件
+              src='share.png';--图片路径
+              layout_width='20dp';--图片宽度
+              layout_height='20dp';--图片高度
+              --scaleType='fitXY';--图片显示类型
+              layout_gravity="center|left";
+              layout_margin="8dp";
+              id="fx";
+            };
+            --左图
+            {
+              TextView;--文本控件
+              layout_width='fill';--文本宽度
+              layout_height='fill';--文本高度
+              gravity='center';--重力属性
+              textColor='#ff000000';--文字颜色
+              text='|';--显示的文字
+              textSize='18sp';--文字大小
+            };
+            --文本分割
+            {
+              ImageView;--图片控件
+              src='home1.png';--图片路径
+              layout_width='20dp';--图片宽度
+              layout_height='20dp';--图片高度
+              --scaleType='fitXY';--图片显示类型
+              layout_gravity="center|right";
+              layout_margin="8dp";
+              id="tc";
+            };
+            --右图
+          };
+          --卡片
+        };
+        --横向
+      };
+      --右边1
+
+      --右边2
+    };
+    --横向
+  };
+  --线性
+  {
+    MaterialCardView,--卡片控件
+    cardElevation="0dp",--卡片阴影
+    layout_width="wrap",--布局宽度
+    layout_height="wrap",--布局高度
+    {
+      ViewPager,
+      id="view_pager",--控件ID
+      layout_width="fill",--布局宽度
+      layout_height="fill",--布局高度
+      pages={
+        ----------------------------------------------------
+        {
+          LinearLayout,--线性布局
+          layout_width="fill",--布局宽度
+          layout_height="fill",--布局高度
+          {
+            MaterialCardView,--卡片控件
+            id="page5",--控件ID
+            radius="15dp",--圆角角度
+            cardElevation="0dp",--卡片阴影
+            cardBackgroundColor="",--卡片背景
+            layout_width="fill",--布局宽度
+            layout_height="90%h",--布局高度
+            layout_marginLeft="10dp",--布局左距
+            layout_marginRight="10dp",--布局右距
+            onClick=function()
+              print"测试：这是第五条卡片控件"
+            end,
+
+          },
+        },
+        ----------------------------------------------------
+        {
+          LinearLayout,--线性布局
+          layout_width="fill",--布局宽度
+          layout_height="fill",--布局高度
+          {
+            LinearLayout,
+            orientation='vertical';--横向或者纵向布局
+            layout_width='fill';--布局宽度
+            layout_height='fill';--布局高度
+            background='';--布局背景颜色
+
+            {
+              LinearLayout,--线性布局
+              orientation='vertical',--方向
+              layout_width='fill',--宽度
+              layout_height='23%h',--高度
+              background='',--背景颜色或图片路径
+              layout_marginTop="50dp";
+              {
+                MaterialCardView;--卡片控件
+                layout_margin='8dp';--边距
+                layout_gravity='center';--重力
+                --左:left 右:right 中:center 顶:top 底:bottom
+                elevation='0dp';--阴影
+                layout_width='91%w';--宽度
+                layout_height='fill';--高度
+                CardBackgroundColor='#ff000000';--颜色
+                radius='8dp';--圆角
+                id="rj";
+                {
+                  LinearLayout,--线性布局
+                  orientation='vertical',--方向
+                  layout_width='fill',--宽度
+                  layout_height='fill',--高度
+                  background='',--背景颜色或图片路径
+                  {
+                    ImageView;--图片控件
+                    src='https://s1.328888.xyz/2022/05/22/d5F1k.png';--图片路径
+                    layout_width='fill';--图片宽度
+                    layout_height='fill';--图片高度
+                    scaleType='fitXY';--图片显示类型
+                  };
+                };
+                --线性
+              };
+            };
+            {
+              LinearLayout,
+              orientation='vertical';--横向或者纵向布局
+              layout_width='fill';--布局宽度
+              layout_height='fill';--布局高度
+              background='';--布局背景颜色
+              layout_marginTop="0dp";
+              {
+                MaterialCardView,--卡片控件
+                id="page1",--控件ID
+                radius="15dp",--圆角角度
+                cardElevation="0dp",--卡片阴影
+                cardBackgroundColor="",--卡片背景
+                layout_width="fill",--布局宽度
+                layout_height="fill",--布局高度
+                layout_marginLeft="20dp",--布局左距
+                layout_marginRight="10dp",--布局右距
+
+                layout_gravity="bottom";
+                {
+                  LinearLayout,
+                  orientation='vertical';--横向或者纵向布局
+                  layout_width='fill';--布局宽度
+                  layout_height='fill';--布局高度
+                  background='';--布局背景颜色
+                  {
+                    GridView,--网格布局
+                    numColumns=2,--单排显示数
+                    layout_width="fill",--宽度
+                    layout_height="fill",--高度
+                    VerticalScrollBarEnabled=false,
+                    OverScrollMode=0,--线条
+                    layout_marginTop="0dp";
+                    id="zb";
+                  };--3.2
+
+                },
+              },
+            },
+
+          },
+        },
+        ----------------------------------------------------
+        {
+          LinearLayout,--线性布局
+          layout_width="fill",--布局宽度
+          layout_height="fill",--布局高度
+
+          {
+            LinearLayout,
+            orientation='vertical';--横向或者纵向布局
+            layout_width='fill';--布局宽度
+            layout_height='fill';--布局高度
+            background='';--布局背景颜色
+            {
+              LinearLayout,--线性布局
+              orientation='vertical',--方向
+              layout_width='fill',--宽度
+              layout_height='23%h',--高度
+              background='',--背景颜色或图片路径
+              layout_marginTop="50dp";
+              {
+                MaterialCardView;--卡片控件
+                layout_margin='8dp';--边距
+                layout_gravity='center';--重力
+                --左:left 右:right 中:center 顶:top 底:bottom
+                elevation='0dp';--阴影
+                layout_width='91%w';--宽度
+                layout_height='fill';--高度
+                CardBackgroundColor='#ff000000';--颜色
+                radius='8dp';--圆角
+                id="gb";
+                {
+                  LinearLayout,--线性布局
+                  orientation='vertical',--方向
+                  layout_width='fill',--宽度
+                  layout_height='fill',--高度
+                  background='',--背景颜色或图片路径
+                  {
+                    ImageView;--图片控件
+                    src='https://s1.328888.xyz/2022/05/21/dlRMq.png';--图片路径
+                    layout_width='fill';--图片宽度
+                    layout_height='fill';--图片高度
+                    scaleType='fitXY';--图片显示类型
+                  };
+                };
+                --线性
+              };
+            };
+            {
+              LinearLayout,
+              orientation='vertical';--横向或者纵向布局
+              layout_width='fill';--布局宽度
+              layout_height='fill';--布局高度
+              background='';--布局背景颜色
+              {
+
+                MaterialCardView,--卡片控件
+                id="page2",--控件ID
+                radius="15dp",--圆角角度
+                cardElevation="0dp",--卡片阴影
+                cardBackgroundColor="",--卡片背景
+                layout_width="fill",--布局宽度
+                layout_height="fill",--布局高度
+                layout_marginLeft="20dp",--布局左距
+                layout_marginRight="10dp",--布局右距
+
+                layout_gravity="bottom";
+                {
+                  LinearLayout,
+                  orientation='vertical';--横向或者纵向布局
+                  layout_width='fill';--布局宽度
+                  layout_height='fill';--布局高度
+                  background='';--布局背景颜色
+                  {
+                    GridView,--网格布局
+                    numColumns=2,--单排显示数
+                    layout_width="fill",--宽度
+                    layout_height="wrap",--高度
+                    VerticalScrollBarEnabled=false,
+                    OverScrollMode=0,--线条
+                    layout_marginTop="0dp";
+                    id="yh";
+                  };--3.2
+
+                };
+
+
+              },
+            },
+          },
+        },
+        ----------------------------------------------------
+        {
+          LinearLayout,--线性布局
+          layout_width="fill",--布局宽度
+          layout_height="fill",--布局高度
+          {
+            LinearLayout,
+            orientation='vertical';--横向或者纵向布局
+            layout_width='fill';--布局宽度
+            layout_height='fill';--布局高度
+            background='';--布局背景颜色
+            {
+            LinearLayout,--线性布局
+            orientation='vertical',--方向
+            layout_width='fill',--宽度
+            layout_height='23%h',--高度
+            background='',--背景颜色或图片路径
+            layout_marginTop="50dp";
+            {
+              MaterialCardView;--卡片控件
+              layout_margin='8dp';--边距
+              layout_gravity='center';--重力
+              --左:left 右:right 中:center 顶:top 底:bottom
+              elevation='0dp';--阴影
+              layout_width='91%w';--宽度
+              layout_height='fill';--高度
+              CardBackgroundColor='#ff000000';--颜色
+              radius='8dp';--圆角
+              id="qx";
+              {
+                LinearLayout,--线性布局
+                orientation='vertical',--方向
+                layout_width='fill',--宽度
+                layout_height='fill',--高度
+                background='',--背景颜色或图片路径
+                {
+                  ImageView;--图片控件
+                  src='https://s1.328888.xyz/2022/05/21/dts5d.png';--图片路径
+                  layout_width='fill';--图片宽度
+                  layout_height='fill';--图片高度
+                  scaleType='fitXY';--图片显示类型
+                };
+              };
+              --线性
+            };
+          };
+          {
+            LinearLayout,
+            orientation='vertical';--横向或者纵向布局
+            layout_width='fill';--布局宽度
+            layout_height='fill';--布局高度
+            background='';--布局背景颜色
+            {
+              MaterialCardView,--卡片控件
+              id="page3",--控件ID
+              radius="15dp",--圆角角度
+              cardElevation="0dp",--卡片阴影
+              cardBackgroundColor="",--卡片背景
+              layout_width="fill",--布局宽度
+              layout_height="fill",--布局高度
+              layout_marginLeft="20dp",--布局左距
+              layout_marginRight="10dp",--布局右距
+
+              layout_gravity="bottom";
+              {
+                LinearLayout,
+                orientation='vertical';--横向或者纵向布局
+                layout_width='fill';--布局宽度
+                layout_height='fill';--布局高度
+                background='';--布局背景颜色
+                {
+                  GridView,--网格布局
+                  numColumns=2,--单排显示数
+                  layout_width="fill",--宽度
+                  layout_height="fill",--高度
+                  VerticalScrollBarEnabled=false,
+                  OverScrollMode=0,--线条
+                  layout_marginTop="0dp";
+                  id="hb";
+                };--3.2
+
+              };
+
+
+            },
+          },
+        },
+      },
+      ----------------------------------------------------
+      {
+          LinearLayout,--线性布局
+          layout_width="fill",--布局宽度
+          layout_height="fill",--布局高度
+          {
+            LinearLayout,
+            orientation='vertical';--横向或者纵向布局
+            layout_width='fill';--布局宽度
+            layout_height='fill';--布局高度
+            background='';--布局背景颜色
+            {
+              LinearLayout,--线性布局
+              orientation='vertical',--方向
+              layout_width='fill',--宽度
+              layout_height='23%h',--高度
+              background='',--背景颜色或图片路径
+              layout_marginTop="50dp";
+              {
+                MaterialCardView;--卡片控件
+                layout_margin='8dp';--边距
+                layout_gravity='center';--重力
+                --左:left 右:right 中:center 顶:top 底:bottom
+                elevation='0dp';--阴影
+                layout_width='91%w';--宽度
+                layout_height='fill';--高度
+                CardBackgroundColor='#ff000000';--颜色
+                radius='8dp';--圆角
+                id="yqzb";
+                {
+                  LinearLayout,--线性布局
+                  orientation='vertical',--方向
+                  layout_width='fill',--宽度
+                  layout_height='fill',--高度
+                  background='',--背景颜色或图片路径
+                  {
+                    ImageView;--图片控件
+                    src='https://s1.328888.xyz/2022/05/22/dWedC.png';--图片路径
+                    layout_width='fill';--图片宽度
+                    layout_height='fill';--图片高度
+                    scaleType='fitXY';--图片显示类型
+                  };
+                };
+                --线性
+              };
+            };
+            {
+              LinearLayout,
+              orientation='vertical';--横向或者纵向布局
+              layout_width='fill';--布局宽度
+              layout_height='fill';--布局高度
+              background='';--布局背景颜色
+              {
+                MaterialCardView,--卡片控件
+                id="page4",--控件ID
+                radius="15dp",--圆角角度
+                cardElevation="0dp",--卡片阴影
+                cardBackgroundColor="",--卡片背景
+                layout_width="fill",--布局宽度
+                layout_height="fill",--布局高度
+                layout_marginLeft="20dp",--布局左距
+                layout_marginRight="10dp",--布局右距
+
+                layout_gravity="bottom";
+                {
+                  LinearLayout,
+                  orientation='vertical';--横向或者纵向布局
+                  layout_width='fill';--布局宽度
+                  layout_height='fill';--布局高度
+                  background='';--布局背景颜色
+                  {
+                    GridView,--网格布局
+                    numColumns=2,--单排显示数
+                    layout_width="fill",--宽度
+                    layout_height="fill",--高度
+                    VerticalScrollBarEnabled=false,
+                    OverScrollMode=0,--线条
+                    layout_marginTop="0dp";
+                    id="yq";
+                  };--3.2
+
+                };
+
+
+              },
+            },
+          },
+        },
+      ----------------------------------------------------
+   {
+          LinearLayout,--线性布局
+          layout_width="fill",--布局宽度
+          layout_height="fill",--布局高度
+          {
+            LinearLayout,
+            orientation='vertical';--横向或者纵向布局
+            layout_width='fill';--布局宽度
+            layout_height='fill';--布局高度
+            background='';--布局背景颜色
+            {
+              LinearLayout,--线性布局
+              orientation='vertical',--方向
+              layout_width='fill',--宽度
+              layout_height='23%h',--高度
+              background='',--背景颜色或图片路径
+              layout_marginTop="50dp";
+              {
+                MaterialCardView;--卡片控件
+                layout_margin='8dp';--边距
+                layout_gravity='center';--重力
+                --左:left 右:right 中:center 顶:top 底:bottom
+                elevation='0dp';--阴影
+                layout_width='91%w';--宽度
+                layout_height='fill';--高度
+                CardBackgroundColor='#ff000000';--颜色
+                radius='8dp';--圆角
+                id="xstg";
+                {
+                  LinearLayout,--线性布局
+                  orientation='vertical',--方向
+                  layout_width='fill',--宽度
+                  layout_height='fill',--高度
+                  background='',--背景颜色或图片路径
+                  {
+                    ImageView;--图片控件
+                    src='https://s1.328888.xyz/2022/05/22/dWuKg.png';--图片路径
+                    layout_width='fill';--图片宽度
+                    layout_height='fill';--图片高度
+                    scaleType='fitXY';--图片显示类型
+                  };
+                };
+                --线性
+              };
+            };
+            {
+              LinearLayout,
+              orientation='vertical';--横向或者纵向布局
+              layout_width='fill';--布局宽度
+              layout_height='fill';--布局高度
+              background='';--布局背景颜色
+              {
+                MaterialCardView,--卡片控件
+                id="page5",--控件ID
+                radius="15dp",--圆角角度
+                cardElevation="0dp",--卡片阴影
+                cardBackgroundColor="",--卡片背景
+                layout_width="fill",--布局宽度
+                layout_height="fill",--布局高度
+                layout_marginLeft="20dp",--布局左距
+                layout_marginRight="10dp",--布局右距
+
+                layout_gravity="bottom";
+                {
+                  LinearLayout,
+                  orientation='vertical';--横向或者纵向布局
+                  layout_width='fill';--布局宽度
+                  layout_height='fill';--布局高度
+                  background='';--布局背景颜色
+                  {
+                    GridView,--网格布局
+                    numColumns=2,--单排显示数
+                    layout_width="fill",--宽度
+                    layout_height="fill",--高度
+                    VerticalScrollBarEnabled=false,
+                    OverScrollMode=0,--线条
+                    layout_marginTop="0dp";
+                    id="tg";
+                  };--3.2
+
+                };
+
+
+              },
+            },
+          },
+        },
+        ----------------------------------------------------
+    {
+          LinearLayout,--线性布局
+          layout_width="fill",--布局宽度
+          layout_height="fill",--布局高度
+          {
+            LinearLayout,
+            orientation='vertical';--横向或者纵向布局
+            layout_width='fill';--布局宽度
+            layout_height='fill';--布局高度
+            background='';--布局背景颜色
+            {
+              LinearLayout,--线性布局
+              orientation='vertical',--方向
+              layout_width='fill',--宽度
+              layout_height='23%h',--高度
+              background='',--背景颜色或图片路径
+              layout_marginTop="50dp";
+              {
+                MaterialCardView;--卡片控件
+                layout_margin='8dp';--边距
+                layout_gravity='center';--重力
+                --左:left 右:right 中:center 顶:top 底:bottom
+                elevation='0dp';--阴影
+                layout_width='91%w';--宽度
+                layout_height='fill';--高度
+                CardBackgroundColor='#ff000000';--颜色
+                radius='8dp';--圆角
+                id="ypzb";
+                {
+                  LinearLayout,--线性布局
+                  orientation='vertical',--方向
+                  layout_width='fill',--宽度
+                  layout_height='fill',--高度
+                  background='',--背景颜色或图片路径
+                  {
+                    ImageView;--图片控件
+                    src='https://s1.328888.xyz/2022/05/23/dj8jB.png';--图片路径
+                    layout_width='fill';--图片宽度
+                    layout_height='fill';--图片高度
+                    scaleType='fitXY';--图片显示类型
+                  };
+                };
+                --线性
+              };
+            };
+            {
+              LinearLayout,
+              orientation='vertical';--横向或者纵向布局
+              layout_width='fill';--布局宽度
+              layout_height='fill';--布局高度
+              background='';--布局背景颜色
+              {
+                MaterialCardView,--卡片控件
+                id="page6",--控件ID
+                radius="15dp",--圆角角度
+                cardElevation="0dp",--卡片阴影
+                cardBackgroundColor="",--卡片背景
+                layout_width="fill",--布局宽度
+                layout_height="fill",--布局高度
+                layout_marginLeft="20dp",--布局左距
+                layout_marginRight="10dp",--布局右距
+
+                layout_gravity="bottom";
+                {
+                  LinearLayout,
+                  orientation='vertical';--横向或者纵向布局
+                  layout_width='fill';--布局宽度
+                  layout_height='fill';--布局高度
+                  background='';--布局背景颜色
+                  {
+                    GridView,--网格布局
+                    numColumns=2,--单排显示数
+                    layout_width="fill",--宽度
+                    layout_height="fill",--高度
+                    VerticalScrollBarEnabled=false,
+                    OverScrollMode=0,--线条
+                    layout_marginTop="0dp";
+                    id="yp";
+                  };--3.2
+
+                };
+
+
+              },
+            },
+          },
+        },
+      ---------------------------------------------------- 
+      {
+        LinearLayout,--线性布局
+        layout_width="fill",--布局宽度
+        layout_height="fill",--布局高度
+        {
+          MaterialCardView,--卡片控件
+          id="page1",--控件ID
+          radius="15dp",--圆角角度
+          cardElevation="0dp",--卡片阴影
+          cardBackgroundColor="",--卡片背景
+          layout_width="fill",--布局宽度
+          layout_height="90%h",--布局高度
+          layout_marginLeft="10dp",--布局左距
+          layout_marginRight="10dp",--布局右距
+          layout_gravity="bottom";
+          onClick=function()
+            print"测试：这是第一条卡片控件"
+          end,
+
+
+        },
+      },
+      ----------------------------------------------------
+    },
+  },
+
+  {
+    MaterialCardView,--卡片控件
+    radius="15dp",--圆角角度
+    cardElevation="0dp",--卡片阴影
+    cardBackgroundColor="",--卡片背景
+    layout_width="fill",--布局宽度
+    layout_height="wrap",--布局高度
+    layout_gravity="center|top",--布局重力
+    layout_marginTop="10dp",--布局底距
+    layout_marginLeft="5dp",--布局右距
+    {
+      LinearLayout,--线性布局
+      Orientation=2,--布局方向
+      layout_gravity="center|left",--布局重力
+      {
+        MaterialCardView,--卡片控件
+        radius="30dp",--圆角角度
+        cardElevation="0dp",--卡片阴影
+        cardBackgroundColor="#8AFFFFFF",--卡片背景
+        layout_width="60dp",--布局宽度
+        layout_height="4%h",--布局高度
+        layout_marginLeft="5dp",--布局左距
+        layout_gravity="center",--布局重力
+        layout_marginRight="5dp",--布局右距
+        {
+          MaterialCardView,--卡片控件
+          id="indicator1",--控件ID
+          radius="15dp",--圆角角度
+          layout_gravity="center",--布局重力
+          cardElevation="0dp",--卡片阴影
+          cardBackgroundColor="#FFFFFFFF",--卡片背景
+          layout_width="fill",--布局宽度
+          layout_height="fill",--布局高度
+          {
+            TextView;--文本控件
+            layout_width='fill';--文本宽度
+            layout_height='fill';--文本高度
+            gravity='center';--重力属性
+            textColor='#FFffffff';--文字颜色
+            text='至尊';--显示的文字
+            --textSize='16sp';--文字大小
+            -- textStyle="bold",
+            id="wz";
+          };
+        },
+      },
+
+      {
+        MaterialCardView,--卡片控件
+        radius="30dp",--圆角角度
+        cardElevation="0dp",--卡片阴影
+        cardBackgroundColor="#8AFFFFFF",--卡片背景
+        layout_width="60dp",--布局宽度
+        layout_height="4%h",--布局高度
+        layout_marginLeft="5dp",--布局左距
+        layout_gravity="center",--布局重力
+        layout_marginRight="5dp",--布局右距
+        {
+          MaterialCardView,--卡片控件
+          id="indicator2",--控件ID
+          radius="15dp",--圆角角度
+          cardElevation="0dp",--卡片阴影
+          cardBackgroundColor="#FFFFFFFF",--卡片背景
+          layout_width="fill",--布局宽度
+          layout_height="fill",--布局高度
+          {
+            TextView;--文本控件
+            layout_width='fill';--文本宽度
+            layout_height='fill';--文本高度
+            gravity='center';--重力属性
+            textColor='#FFffffff';--文字颜色
+            text='Glive';--显示的文字
+            -- textSize='18sp';--文字大小
+            -- textStyle="bold",
+            id="wz2";
+          };
+        },
+      },
+
+      {
+        MaterialCardView,--卡片控件
+        radius="30dp",--圆角角度
+        cardElevation="0dp",--卡片阴影
+        cardBackgroundColor="#8AFFFFFF",--卡片背景
+        layout_width="60dp",--布局宽度
+        layout_height="4%h",--布局高度
+        layout_marginLeft="5dp",--布局左距
+        layout_gravity="center",--布局重力
+        layout_marginRight="5dp",--布局右距
+        {
+          MaterialCardView,--卡片控件
+          id="indicator3",--控件ID
+          radius="15dp",--圆角角度
+          cardElevation="0dp",--卡片阴影
+          cardBackgroundColor="#FFFFFFFF",--卡片背景
+          layout_width="fill",--布局宽度
+          layout_height="fill",--布局高度
+          {
+            TextView;--文本控件
+            layout_width='fill';--文本宽度
+            layout_height='fill';--文本高度
+            gravity='center';--重力属性
+            textColor='#FFffffff';--文字颜色
+            text='千寻';--显示的文字
+            --textSize='18sp';--文字大小
+            --textStyle="bold",
+            id="wz3";
+          };
+        },
+      },
+
+{
+          MaterialCardView,--卡片控件
+          radius="30dp",--圆角角度
+          cardElevation="0dp",--卡片阴影
+          cardBackgroundColor="#8AFFFFFF",--卡片背景
+          layout_width="60dp",--布局宽度
+          layout_height="4%h",--布局高度
+          layout_marginLeft="5dp",--布局左距
+          layout_gravity="center",--布局重力
+          layout_marginRight="5dp",--布局右距
+          {
+            MaterialCardView,--卡片控件
+            id="indicator4",--控件ID
+            radius="15dp",--圆角角度
+            cardElevation="0dp",--卡片阴影
+            cardBackgroundColor="#FFFFFFFF",--卡片背景
+            layout_width="fill",--布局宽度
+            layout_height="fill",--布局高度
+            {
+              TextView;--文本控件
+              layout_width='fill';--文本宽度
+              layout_height='fill';--文本高度
+              gravity='center';--重力属性
+              textColor='#FFffffff';--文字颜色
+              text='元气';--显示的文字
+              --textSize='18sp';--文字大小
+              --textStyle="bold",
+              id="wz3";
+            };
+          },
+        },
+{
+          MaterialCardView,--卡片控件
+          radius="30dp",--圆角角度
+          cardElevation="0dp",--卡片阴影
+          cardBackgroundColor="#8AFFFFFF",--卡片背景
+          layout_width="60dp",--布局宽度
+          layout_height="4%h",--布局高度
+          layout_marginLeft="5dp",--布局左距
+          layout_gravity="center",--布局重力
+          layout_marginRight="5dp",--布局右距
+          {
+            MaterialCardView,--卡片控件
+            id="indicator5",--控件ID
+            radius="15dp",--圆角角度
+            cardElevation="0dp",--卡片阴影
+            cardBackgroundColor="#FFFFFFFF",--卡片背景
+            layout_width="fill",--布局宽度
+            layout_height="fill",--布局高度
+            {
+              TextView;--文本控件
+              layout_width='fill';--文本宽度
+              layout_height='fill';--文本高度
+              gravity='center';--重力属性
+              textColor='#FFffffff';--文字颜色
+              text='糖果';--显示的文字
+              --textSize='18sp';--文字大小
+              --textStyle="bold",
+              id="wz3";
+            };
+          },
+        },
+{
+          MaterialCardView,--卡片控件
+          radius="30dp",--圆角角度
+          cardElevation="0dp",--卡片阴影
+          cardBackgroundColor="#8AFFFFFF",--卡片背景
+          layout_width="60dp",--布局宽度
+          layout_height="4%h",--布局高度
+          layout_marginLeft="5dp",--布局左距
+          layout_gravity="center",--布局重力
+          layout_marginRight="5dp",--布局右距
+          {
+            MaterialCardView,--卡片控件
+            id="indicator6",--控件ID
+            radius="15dp",--圆角角度
+            cardElevation="0dp",--卡片阴影
+            cardBackgroundColor="#FFFFFFFF",--卡片背景
+            layout_width="fill",--布局宽度
+            layout_height="fill",--布局高度
+            {
+              TextView;--文本控件
+              layout_width='fill';--文本宽度
+              layout_height='fill';--文本高度
+              gravity='center';--重力属性
+              textColor='#FFffffff';--文字颜色
+              text='有派';--显示的文字
+              --textSize='18sp';--文字大小
+              --textStyle="bold",
+              id="wz3";
+            };
+          },
+        },
+
+    },
+  },
+},
+};
+
+activity.setContentView(loadlayout(layout))
+
+function 渐变(left_jb,right_jb,id)
+
+  import "android.graphics.drawable.GradientDrawable"
+  drawable = GradientDrawable(GradientDrawable.Orientation.TR_BL,{
+    right_jb,--右色
+    left_jb,--左色
+  });
+  id.setBackgroundDrawable(drawable)
+
+end
+
+function indicatorUpdate(view, views)
+  for i=1,table.size(views) do
+    if i==view.getCurrentItem() then
+      views[i].setVisibility(View.VISIBLE)
+
+      渐变(0xff87b6fe,0xff3487ff,views[i])--调用方法
+     else
+      --views[i].setVisibility(View.INVISIBLE)
+      渐变(0xff87b6fe,0xffffffff,views[i])--调用方法
+    end
+  end
+end
+
+
+view_pager.setCurrentItem(1,true)
+
+indicators={indicator1,indicator2,indicator3,indicator4,indicator5,indicator6}
+
+indicatorUpdate(view_pager,indicators)
+
+view_pager.addOnPageChangeListener(ViewPager.OnPageChangeListener{
+  onPageSelected=function(position)
+    if position==0 then
+      view_pager.setCurrentItem(6,true)
+     elseif position==7 then
+      view_pager.setCurrentItem(1,true)
+    end
+    indicatorUpdate(view_pager,indicators)
+  end
+});
+
+function slideUpdate(view, startPage, endPage)
+  if view.getCurrentItem()==endPage then
+    view.setCurrentItem(startPage,true)
+   else
+    view.setCurrentItem(view_pager.getCurrentItem()+1,true)
+  end
+end
+
+
+
+
+
+xl=
+{
+  LinearLayout,
+  orientation='vertical';--横向或者纵向布局
+  --layout_width='fill';--布局宽度
+  --layout_height='fill';--布局高度
+  background='';--布局背景颜色
+
+  {
+    LinearLayout,--线性布局
+    orientation='vertical',--方向
+    layout_width='fill',--宽度
+    layout_height='fill',--高度
+    background='',--背景颜色或图片路径
+    gravity="center";
+    {
+      MaterialCardView;--卡片控件
+      layout_margin='0dp';--边距
+      layout_marginTop='10dp';
+      layout_marginRight="0dp",--布局右距
+      layout_gravity='center';--重力
+      --左:left 右:right 中:center 顶:top 底:bottom
+      elevation='0dp';--阴影
+      layout_width='44%w';--宽度
+      layout_height='44%w';--高度
+      CardBackgroundColor='#FFF5F6F8';--颜色
+      radius='8dp';--圆角
+      {
+        ImageView;--图片控件
+        src='';--图片路径
+        layout_width='fill';--图片宽度
+        layout_height='fill';--图片高度
+        scaleType='fitXY';--图片显示类型
+        id="zbtu";
+        layout_gravity="center";
+      };
+      --图片
+      {
+        TextView;--文本控件
+        layout_width='fill';--文本宽度
+        layout_height='fill';--文本高度
+        gravity='center|bottom';--重力属性
+        textColor='#ffffffff';--文字颜色
+        text='';--显示的文字
+        layout_marginBottom="30dp",--布局右距
+        id="zbbt";
+        background="";
+        --textSize='15sp';--文字大小
+      };
+      {
+        TextView;--文本控件
+        layout_width='fill';--文本宽度
+        layout_height='fill';--文本高度
+        gravity='center|bottom';--重力属性
+        textColor='#ffffffff';--文字颜色
+        text='';--显示的文字
+        layout_marginBottom="0dp",--布局右距
+        id="zbnr";
+        background="";
+        --textSize='12sp';--文字大小
+      };
+      --文字
+      {
+        TextView;--文本控件
+        layout_width='0dp';--文本宽度
+        layout_height='0dp';--文本高度
+        gravity='center|bottom';--重力属性
+        textColor='#ffffffff';--文字颜色
+        text='';--显示的文字
+        layout_marginBottom="0dp",--布局右距
+        id="zblj";
+        background="";
+        --textSize='15sp';--文字大小
+      };
+      --文字
+    };
+    --卡片
+  };
+  --上一层
+  {
+    LinearLayout,--线性布局
+    orientation='vertical',--方向
+    layout_width='fill',--宽度
+    layout_height='wrap',--高度
+    background='',--背景颜色或图片路径
+
+
+    --文字
+  };
+  --下一层
+};
+
+
+
+
+
+zbdata={}
+adp=LuaAdapter(activity,zbdata,xl)
+zb.Adapter=adp
+
+图片转换=loadbitmap("zbjz.png")
+
+
+
+
+url="http://119.29.83.24:8123/qinglongzhibo.m3u"
+Http.get(url,function(code,content)
+  if code==200 and content then
+    for logo,group,name,rtmp in content:gmatch('logo="(.-)" group%-title="(.-)",(.-)\n(.-)\n')
+      --print(logo,group,name,rtmp)
+
+      adp.add({
+        zbtu=logo,
+        zbbt=name,
+        zblj=rtmp,
+        zbnr=标题
+      })
+
+    end
+
+  end
+end)
+
+
+
+zb.onItemClick=function(parent,v,pos,id)
+  链接=v.tag.zblj.text:gsub("%s","")
+  标题=v.tag.zbbt.text
+  value="A"..标题.."A".."B"..链接.."B"
+  进入子页面("smbf",{value})
+end
+
+
+--用户
+yhb=
+{
+  LinearLayout,
+  orientation='vertical';--横向或者纵向布局
+  --layout_width='fill';--布局宽度
+  --layout_height='fill';--布局高度
+  background='';--布局背景颜色
+
+  {
+    LinearLayout,--线性布局
+    orientation='vertical',--方向
+    layout_width='fill',--宽度
+    layout_height='fill',--高度
+    background='',--背景颜色或图片路径
+    gravity="center";
+    {
+      MaterialCardView;--卡片控件
+      layout_margin='0dp';--边距
+      layout_marginTop='10dp';
+      layout_marginRight="0dp",--布局右距
+      layout_gravity='center';--重力
+      --左:left 右:right 中:center 顶:top 底:bottom
+      elevation='0dp';--阴影
+      layout_width='44%w';--宽度
+      layout_height='44%w';--高度
+      CardBackgroundColor='#FFF5F6F8';--颜色
+      radius='8dp';--圆角
+      {
+        ImageView;--图片控件
+        src='';--图片路径
+        layout_width='fill';--图片宽度
+        layout_height='fill';--图片高度
+        scaleType='fitXY';--图片显示类型
+        id="zbtu";
+        layout_gravity="center";
+      };
+      --图片
+      {
+        TextView;--文本控件
+        layout_width='fill';--文本宽度
+        layout_height='fill';--文本高度
+        gravity='center|bottom';--重力属性
+        textColor='#ffffffff';--文字颜色
+        text='';--显示的文字
+        layout_marginBottom="30dp",--布局右距
+        id="zbbt";
+        background="";
+        --textSize='15sp';--文字大小
+      };
+      --文字
+{
+        TextView;--文本控件
+        layout_width='fill';--文本宽度
+        layout_height='fill';--文本高度
+        gravity='center|bottom';--重力属性
+        textColor='#ffffffff';--文字颜色
+        text='';--显示的文字
+        layout_marginTop="0dp",--布局右距
+        id="zbnr";
+        background="";
+        --textSize='12sp';--文字大小
+      };
+      --文字
+      {
+        TextView;--文本控件
+        layout_width='0dp';--文本宽度
+        layout_height='0dp';--文本高度
+        gravity='center|bottom';--重力属性
+        textColor='#ffffffff';--文字颜色
+        text='';--显示的文字
+        layout_marginBottom="10dp",--布局右距
+        id="zblj";
+        background="";
+        --textSize='15sp';--文字大小
+      };
+    };
+    --卡片
+  };
+  --上一层
+  {
+    LinearLayout,--线性布局
+    orientation='vertical',--方向
+    layout_width='fill',--宽度
+    layout_height='wrap',--高度
+    background='',--背景颜色或图片路径
+
+
+    --文字
+  };
+  --下一层
+};
+
+
+
+
+
+yhdata={}
+adp2=LuaAdapter(activity,yhdata,yhb)
+yh.Adapter=adp2
+
+
+
+import"cjson"
+url="http://home.heyongmei.top/appapi/?service=Home.getHot&p=1"
+--ua="Mozilla/5.0 (Linux；； Android 11；； Mi 10 Pro) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.152 Mobile Safari/537.36"
+Http.get(url,function(code,content,ua)
+
+  if code==200 and content
+
+    json=cjson.decode(content)
+
+
+    --print(dump(json.data.info[1].list))
+
+    for k,v in ipairs(json.data.info[1].list) do
+
+
+      图片=v.thumb
+      链接=v.pull
+      名字=v.user_nicename
+      标题=v.title
+
+
+      adp2.add({
+        zbtu=图片,
+        zbbt=名字,
+        zblj=链接,
+zbnr=标题,
+
+
+      })
+
+    end
+
+
+  end
+
+end)
+
+
+
+yh.onItemClick=function(parent,v,pos,id)
+  链接=v.tag.zblj.text
+  标题=v.tag.zbbt.text
+  value="A"..标题.."A".."B"..链接.."B"
+
+  进入子页面("smbf",{value})
+end
+
+
+--红包榜
+
+hbb=
+{
+  LinearLayout,
+  orientation='vertical';--横向或者纵向布局
+  --layout_width='fill';--布局宽度
+  --layout_height='fill';--布局高度
+  background='';--布局背景颜色
+
+  {
+    LinearLayout,--线性布局
+    orientation='vertical',--方向
+    layout_width='fill',--宽度
+    layout_height='fill',--高度
+    background='',--背景颜色或图片路径
+    gravity="center";
+    {
+      MaterialCardView;--卡片控件
+      layout_margin='0dp';--边距
+      layout_marginTop='10dp';
+      layout_marginRight="0dp",--布局右距
+      layout_gravity='center';--重力
+      --左:left 右:right 中:center 顶:top 底:bottom
+      elevation='0dp';--阴影
+      layout_width='44%w';--宽度
+      layout_height='44%w';--高度
+      CardBackgroundColor='#FFF5F6F8';--颜色
+      radius='8dp';--圆角
+      {
+        ImageView;--图片控件
+        src='';--图片路径
+        layout_width='fill';--图片宽度
+        layout_height='fill';--图片高度
+        scaleType='fitXY';--图片显示类型
+        id="zbtu";
+        layout_gravity="center";
+      };
+      --图片
+      {
+        TextView;--文本控件
+        layout_width='fill';--文本宽度
+        layout_height='fill';--文本高度
+        gravity='center|bottom';--重力属性
+        textColor='#ffffffff';--文字颜色
+        text='';--显示的文字
+        layout_marginBottom="30dp",--布局右距
+        id="zbbt";
+        background="";
+        --textSize='15sp';--文字大小
+      };
+      --文字
+      {
+        TextView;--文本控件
+        layout_width='fill';--文本宽度
+        layout_height='fill';--文本高度
+        gravity='center|bottom';--重力属性
+        textColor='#ffffffff';--文字颜色
+        text='';--显示的文字
+        layout_marginTop="0dp",--布局右距
+        id="zbnr";
+        background="";
+        --textSize='12sp';--文字大小
+      };
+      --文字
+      {
+        TextView;--文本控件
+        layout_width='0dp';--文本宽度
+        layout_height='0dp';--文本高度
+        gravity='center|bottom';--重力属性
+        textColor='#ffffffff';--文字颜色
+        text='';--显示的文字
+        layout_marginBottom="10dp",--布局右距
+        id="zblj";
+        background="";
+        --textSize='15sp';--文字大小
+      };
+      
+    };
+    --卡片
+  };
+  --上一层
+  {
+    LinearLayout,--线性布局
+    orientation='vertical',--方向
+    layout_width='fill',--宽度
+    layout_height='wrap',--高度
+    background='',--背景颜色或图片路径
+
+
+    --文字
+  };
+  --下一层
+};
+
+
+
+
+
+hbdata={}
+adp3=LuaAdapter(activity,hbdata,hbb)
+hb.Adapter=adp3
+
+
+
+import"cjson"
+url="https://gateway.qianxunlive.com/appapi/?service=Home.getHot&p=1"
+--ua="Mozilla/5.0 (Linux；； Android 11；； Mi 10 Pro) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.152 Mobile Safari/537.36"
+Http.get(url,function(code,content,ua)
+
+  if code==200 and content then
+    json=cjson.decode(content)
+
+    表={}
+
+    for i=1,#json.data.info[1].list do
+
+      table.insert(表,json.data.info[1].list[i])
+
+    end
+
+
+    for k,p in ipairs(表) do
+
+      图片=p.avatar
+      名字=p.user_nicename
+      链接=p.pull
+内容=p.title
+
+if 内容:find("妈") then
+
+
+else
+
+      adp3.add({
+        zbtu=图片,
+        zbbt=名字,
+        zblj=链接,
+        zbnr=内容
+      })
+    end
+end
+  end
+
+end)
+
+
+
+
+
+hb.onItemClick=function(parent,v,pos,id)
+  链接=v.tag.zblj.text
+  标题=v.tag.zbbt.text
+  value="A"..标题.."A".."B"..链接.."B"
+
+  进入子页面("smbf",{value})
+end
+
+--元气直播
+
+yqitem=
+{
+  LinearLayout,
+  orientation='vertical';--横向或者纵向布局
+  --layout_width='fill';--布局宽度
+  --layout_height='fill';--布局高度
+  background='';--布局背景颜色
+
+  {
+    LinearLayout,--线性布局
+    orientation='vertical',--方向
+    layout_width='fill',--宽度
+    layout_height='fill',--高度
+    background='',--背景颜色或图片路径
+    gravity="center";
+    {
+      MaterialCardView;--卡片控件
+      layout_margin='0dp';--边距
+      layout_marginTop='10dp';
+      layout_marginRight="0dp",--布局右距
+      layout_gravity='center';--重力
+      --左:left 右:right 中:center 顶:top 底:bottom
+      elevation='0dp';--阴影
+      layout_width='44%w';--宽度
+      layout_height='44%w';--高度
+      CardBackgroundColor='#FFF5F6F8';--颜色
+      radius='8dp';--圆角
+      {
+        ImageView;--图片控件
+        src='';--图片路径
+        layout_width='fill';--图片宽度
+        layout_height='fill';--图片高度
+        scaleType='fitXY';--图片显示类型
+        id="zbtu";
+        layout_gravity="center";
+      };
+      --图片
+      {
+        TextView;--文本控件
+        layout_width='fill';--文本宽度
+        layout_height='fill';--文本高度
+        gravity='center|bottom';--重力属性
+        textColor='#ffffffff';--文字颜色
+        text='';--显示的文字
+        layout_marginBottom="20dp",--布局右距
+        id="zbbt";
+        background="";
+        --textSize='15sp';--文字大小
+      };
+      --文字
+      {
+        TextView;--文本控件
+        layout_width='fill';--文本宽度
+        layout_height='fill';--文本高度
+        gravity='center|bottom';--重力属性
+        textColor='#ffffffff';--文字颜色
+        text='';--显示的文字
+        layout_marginTop="10dp",--布局右距
+        id="zbnr";
+        background="";
+        --textSize='12sp';--文字大小
+      };
+      --文字
+      {
+        TextView;--文本控件
+        layout_width='0dp';--文本宽度
+        layout_height='0dp';--文本高度
+        gravity='center|bottom';--重力属性
+        textColor='#ffffffff';--文字颜色
+        text='';--显示的文字
+        layout_marginBottom="10dp",--布局右距
+        id="zblj";
+        background="";
+        --textSize='15sp';--文字大小
+      };
+    };
+    --卡片
+  };
+  --上一层
+  {
+    LinearLayout,--线性布局
+    orientation='vertical',--方向
+    layout_width='fill',--宽度
+    layout_height='wrap',--高度
+    background='',--背景颜色或图片路径
+
+
+    --文字
+  };
+  --下一层
+};
+
+
+
+
+
+yqdata={}
+adp4=LuaAdapter(activity,yqdata,yqitem)
+yq.Adapter=adp4
+
+
+function encode(data)--编码
+  local Base64=luajava.bindClass("android.util.Base64") 
+  return Base64.encodeToString(String(data).getBytes(),Base64.NO_WRAP);
+end
+
+function decode(data)--解码
+  local Base64=luajava.bindClass("android.util.Base64") 
+  return String(Base64.decode(data,Base64.DEFAULT)).toString()
+end
+
+import"cjson"
+url="http://yq001.xyz//api/public/?service=Home.getHot&sbcode=3ccd7378fc3253ecb33212f91cf6c0dc&uid=9904&token=0a48b2441eee256e26d819bc82e3a7d9&p=1"
+--ua="Mozilla/5.0 (Linux；； Android 11；； Mi 10 Pro) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.152 Mobile Safari/537.36"
+Http.get(url,function(code,content,ua)
+
+if code==200 and content then
+json=cjson.decode(content)
+
+
+    表={}
+
+    for i=1,#json.data.info[1].list do
+
+      table.insert(表,json.data.info[1].list[i])
+
+    end
+
+
+    for k,p in ipairs(表) do
+
+      图片=p.avatar
+      名字=p.user_nicename
+      链接=p.pull
+      标题=p.title
+ 
+ if 名字:find ("操b")  or 名字:find ("女")or 名字:find ("刷礼物显示")   then
+  
+  else
+      
+      adp4.add({
+        zbtu=图片,
+        zbbt=名字,
+        zblj=decode(链接),
+        zbnr=标题
+      })
+end
+    end
+
+  end
+
+end)
+
+
+
+
+
+yq.onItemClick=function(parent,v,pos,id)
+  链接=v.tag.zblj.text
+  标题=v.tag.zbbt.text
+  value="A"..标题.."A".."B"..链接.."B"
+
+  进入子页面("smbf",{value})
+end
+
+--糖果直播
+
+tgitem=
+{
+  LinearLayout,
+  orientation='vertical';--横向或者纵向布局
+  --layout_width='fill';--布局宽度
+  --layout_height='fill';--布局高度
+  background='';--布局背景颜色
+
+  {
+    LinearLayout,--线性布局
+    orientation='vertical',--方向
+    layout_width='fill',--宽度
+    layout_height='fill',--高度
+    background='',--背景颜色或图片路径
+    gravity="center";
+    {
+      MaterialCardView;--卡片控件
+      layout_margin='0dp';--边距
+      layout_marginTop='10dp';
+      layout_marginRight="0dp",--布局右距
+      layout_gravity='center';--重力
+      --左:left 右:right 中:center 顶:top 底:bottom
+      elevation='0dp';--阴影
+      layout_width='44%w';--宽度
+      layout_height='44%w';--高度
+      CardBackgroundColor='#FFF5F6F8';--颜色
+      radius='8dp';--圆角
+      {
+        ImageView;--图片控件
+        src='';--图片路径
+        layout_width='fill';--图片宽度
+        layout_height='fill';--图片高度
+        scaleType='fitXY';--图片显示类型
+        id="zbtu";
+        layout_gravity="center";
+      };
+      --图片
+      {
+        TextView;--文本控件
+        layout_width='fill';--文本宽度
+        layout_height='fill';--文本高度
+        gravity='center|bottom';--重力属性
+        textColor='#ffffffff';--文字颜色
+        text='';--显示的文字
+        layout_marginBottom="20dp",--布局右距
+        id="zbbt";
+        background="";
+        --textSize='15sp';--文字大小
+      };
+      --文字
+      {
+        TextView;--文本控件
+        layout_width='fill';--文本宽度
+        layout_height='fill';--文本高度
+        gravity='center|bottom';--重力属性
+        textColor='#ffffffff';--文字颜色
+        text='';--显示的文字
+        layout_marginTop="0dp",--布局右距
+        id="zbnr";
+        background="";
+        --textSize='12sp';--文字大小
+      };
+      --文字
+      {
+        TextView;--文本控件
+        layout_width='0dp';--文本宽度
+        layout_height='0dp';--文本高度
+        gravity='center|bottom';--重力属性
+        textColor='#ffffffff';--文字颜色
+        text='';--显示的文字
+        layout_marginBottom="10dp",--布局右距
+        id="zblj";
+        background="";
+        --textSize='15sp';--文字大小
+      };
+    };
+    --卡片
+  };
+  --上一层
+  {
+    LinearLayout,--线性布局
+    orientation='vertical',--方向
+    layout_width='fill',--宽度
+    layout_height='wrap',--高度
+    background='',--背景颜色或图片路径
+
+
+    --文字
+  };
+  --下一层
+};
+
+
+
+
+
+tgdata={}
+adp5=LuaAdapter(activity,tgdata,tgitem)
+tg.Adapter=adp5
+
+
+
+import"cjson"
+url="http://x3.eyixvmg.cn/appapi/?service=Home.getHot&p=1"
+--ua="Mozilla/5.0 (Linux；； Android 11；； Mi 10 Pro) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.152 Mobile Safari/537.36"
+Http.get(url,function(code,content,ua)
+
+  if code==200 and content then
+    json=cjson.decode(content)
+
+    表={}
+
+    for i=1,#json.data.info[1].list do
+
+      table.insert(表,json.data.info[1].list[i])
+
+    end
+
+
+    for k,p in ipairs(表) do
+
+      图片=p.avatar
+      名字=p.user_nicename
+      链接=p.pull
+      标题=p.title
+      if 图片:find("default.jpg") then
+        adp5.add({
+          zbtu="https://s1.328888.xyz/2022/05/21/dHx13.png",
+          zbbt=名字,
+          zblj=链接,
+          zbnr=标题
+        })
+       else
+        adp5.add({
+          zbtu=图片,
+          zbbt=名字,
+          zblj=链接,
+          zbnr=标题
+        })
+      end
+    end
+    else
+        adp5.add({
+          zbtu="https://s1.328888.xyz/2022/05/21/dHx13.png",
+          zbbt="未链接到平台",
+          zblj="",
+          zbnr="请等待管理员修复"
+        })
+  end
+
+end)
+
+tg.onItemClick=function(parent,v,pos,id)
+  链接=v.tag.zblj.text
+  标题=v.tag.zbbt.text
+  value="A"..标题.."A".."B"..链接.."B"
+
+  进入子页面("smbf",{value})
+end
+
+ypitem=
+{
+  LinearLayout,
+  orientation='vertical';--横向或者纵向布局
+  --layout_width='fill';--布局宽度
+  --layout_height='fill';--布局高度
+  background='';--布局背景颜色
+
+  {
+    LinearLayout,--线性布局
+    orientation='vertical',--方向
+    layout_width='fill',--宽度
+    layout_height='fill',--高度
+    background='',--背景颜色或图片路径
+    gravity="center";
+    {
+      MaterialCardView;--卡片控件
+      layout_margin='0dp';--边距
+      layout_marginTop='10dp';
+      layout_marginRight="0dp",--布局右距
+      layout_gravity='center';--重力
+      --左:left 右:right 中:center 顶:top 底:bottom
+      elevation='0dp';--阴影
+      layout_width='44%w';--宽度
+      layout_height='44%w';--高度
+      CardBackgroundColor='#FFF5F6F8';--颜色
+      radius='8dp';--圆角
+      {
+        ImageView;--图片控件
+        src='';--图片路径
+        layout_width='fill';--图片宽度
+        layout_height='fill';--图片高度
+        scaleType='fitXY';--图片显示类型
+        id="zbtu";
+        layout_gravity="center";
+      };
+      --图片
+      {
+        TextView;--文本控件
+        layout_width='fill';--文本宽度
+        layout_height='fill';--文本高度
+        gravity='center|bottom';--重力属性
+        textColor='#ffffffff';--文字颜色
+        text='';--显示的文字
+        layout_marginBottom="10dp",--布局右距
+        id="zbbt";
+        background="";
+        --textSize='15sp';--文字大小
+      };
+      --文字
+      {
+        TextView;--文本控件
+        layout_width='0dp';--文本宽度
+        layout_height='0dp';--文本高度
+        gravity='center|bottom';--重力属性
+        textColor='#ffffffff';--文字颜色
+        text='';--显示的文字
+        layout_marginBottom="10dp",--布局右距
+        id="zblj";
+        background="";
+        --textSize='15sp';--文字大小
+      };
+    };
+    --卡片
+  };
+  --上一层
+  {
+    LinearLayout,--线性布局
+    orientation='vertical',--方向
+    layout_width='fill',--宽度
+    layout_height='wrap',--高度
+    background='',--背景颜色或图片路径
+
+
+    --文字
+  };
+  --下一层
+};
+
+
+
+
+
+ypdata={}
+adp6=LuaAdapter(activity,ypdata,ypitem)
+yp.Adapter=adp6
+
+
+
+url="http://119.29.83.24:8123/youpaizhibo.m3u"
+Http.get(url,function(code,content)
+  if code==200 and content then
+    for logo,group,name,link in content:gmatch('logo="(.-)" group%-title="(.-)",(.-)\n(.-)\n')
+      --print(logo,group,name,link)
+
+
+
+      adp6.add({
+        zbtu=logo,
+        zbbt=name,
+        zblj=link,
+        zbnr=标题
+      })
+
+    end
+
+  end
+end)
+
+
+
+
+
+
+
+
+yp.onItemClick=function(parent,v,pos,id)
+  链接=v.tag.zblj.text
+  标题=v.tag.zbbt.text
+  value="A"..标题.."A".."B"..链接.."B"
+
+  进入子页面("smbf",{value})
+end
+
+
+qx.onClick=function()
+value="https://fx.purpletv.net/?share=FREY13"
+进入子页面("zzhll",{value})
+end
+
+gb.onClick=function()
+value="http://home.heyongmei.top/Appapi/Agent/register?code=A840UK"
+进入子页面("zzhll",{value})
+end
+
+yqzb.onClick=function()
+value="http://yq001.xyz/index.php?g=Appapi&m=Agent&a=down&id=9904"
+进入子页面("zzhll",{value})
+end
+
+ypzb.onClick=function()
+
+进入子页面("smys")
+end
+
+rj.onClick=function()
+进入子页面("rjfx")
+end
+
+xstg.onClick=function()
+进入子页面("xsmxs")
+
+end
+
+import "android.view.ViewAnimationUtils"
+
+--退出
+tc.onClick=function()
+  退出页面()
+end
+
+
+
+
+
+
+
+
+
+
+【远程代码】

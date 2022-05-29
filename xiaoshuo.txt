@@ -305,7 +305,7 @@ end
 
 
 import"cjson"
-url="https://wds.ecsxs.com/221832.json"
+url="https://zl-nine.vercel.app/chucun.txt"
 --ua="Mozilla/5.0 (Linux；； Android 11；； Mi 10 Pro) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.152 Mobile Safari/537.36"
 Http.get(url,function(code,content,ua)
 

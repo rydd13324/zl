@@ -1,0 +1,345 @@
+【远程代码】
+--*******本示例需要在FusionApp2-beta8.6及以上版本使用
+--*******本示例需要在FusionApp2-beta8.6及以上版本使用
+
+require"import"
+import "androidx.recyclerview.widget.*"
+import "android.widget.*"
+import "com.google.android.material.snackbar.Snackbar"
+import "com.google.android.material.card.MaterialCardView"
+import "com.google.android.material.appbar.AppBarLayout"
+import "android.graphics.Color"
+--import"com.scwang.smartrefresh.layout.SmartRefreshLayout"
+
+import "android.graphics.drawable.GradientDrawable$Orientation"
+import "androidx.viewpager2.widget.ViewPager2$Orientation"
+import "androidx.recyclerview.widget.RecyclerView$Orientation"
+import "android.widget.TextView"
+import "android.widget.LinearLayout"
+import "com.androlua.LuaRecyclerAdapter"
+import "android.widget.ImageView"
+import "androidx.recyclerview.widget.RecyclerView"
+import "androidx.recyclerview.widget.StaggeredGridLayoutManager"
+import "com.google.android.material.card.MaterialCardView"
+import "androidx.recyclerview.widget.GridLayoutManager"
+import "com.androlua.Http"
+import "androidx.cardview.widget.CardView"
+import "android.graphics.Color"
+import "androidx.recyclerview.widget.LinearLayoutManager"
+activity.overridePendingTransition(android.R.anim.fade_in,android.R.anim.fade_out)
+--设置layout布局
+local layout={
+  LinearLayout,
+  layout_width="match",
+  layout_height="match",
+  Orientation=1,--设置纵向布局
+  background="#f5f5f5",
+  {
+    LinearLayout,--线性布局
+    orientation='vertical',--方向
+    layout_width='fill',--宽度
+    layout_height='wrap',--高度
+    background='#ffffffff',--背景颜色或图片路径
+    {
+      LinearLayout,--线性布局
+      orientation='horizontal',--方向
+      layout_width='fill',--宽度
+      layout_height='fill',--高度
+      background='',--背景颜色或图片路径
+      {
+        LinearLayout,--线性布局
+        orientation='vertical',--方向
+        layout_width='80%w',--宽度
+        layout_height='fill',--高度
+        --background='#FFF44336',--背景颜色或图片路径
+        {
+          TextView;--文本控件
+          layout_width='fill';--文本宽度
+          layout_height='fill';--文本高度
+          gravity='center|left';--重力属性
+          textColor='#ff000000';--文字颜色
+          text='涩涩写帧';--显示的文字
+          textSize='20sp';--文字大小
+          layout_marginLeft="10dp";
+          textStyle="bold",
+        };
+        --文本
+      };
+      --左边
+      {
+        LinearLayout,--线性布局
+        orientation='vertical',--方向
+        layout_width='20%w',--宽度
+        layout_height='fill',--高度
+        background='',--背景颜色或图片路径
+        {
+          LinearLayout,--线性布局
+          orientation='horizontal',--方向
+          layout_width='fill',--宽度
+          layout_height='fill',--高度
+          background='',--背景颜色或图片路径
+          {
+            MaterialCardView;--卡片控件
+            layout_margin='8dp';--边距
+            layout_gravity='center';--重力
+            --左:left 右:right 中:center 顶:top 底:bottom
+            elevation='0dp';--阴影
+            layout_width='fill';--宽度
+            layout_height='fill';--高度
+            CardBackgroundColor='#FFF5F6F8';--颜色
+            radius='10dp';--圆角
+            {
+              ImageView;--图片控件
+              src='share.png';--图片路径
+              layout_width='20dp';--图片宽度
+              layout_height='20dp';--图片高度
+              --scaleType='fitXY';--图片显示类型
+              layout_gravity="center|left";
+              layout_margin="8dp";
+              id="fx";
+            };
+            --左图
+            {
+              TextView;--文本控件
+              layout_width='fill';--文本宽度
+              layout_height='fill';--文本高度
+              gravity='center';--重力属性
+              textColor='#ff000000';--文字颜色
+              text='|';--显示的文字
+              textSize='18sp';--文字大小
+            };
+            --文本分割
+            {
+              ImageView;--图片控件
+              src='home1.png';--图片路径
+              layout_width='20dp';--图片宽度
+              layout_height='20dp';--图片高度
+              --scaleType='fitXY';--图片显示类型
+              layout_gravity="center|right";
+              layout_margin="8dp";
+              id="tc";
+            };
+            --右图
+          };
+          --卡片
+        };
+        --横向
+      };
+      --右边1
+
+      --右边2
+    };
+    --横向
+  };
+  --线性
+
+  {
+    LinearLayout,--线性布局
+    orientation="vertical",--布局方向
+    layout_width="fill",--布局宽度
+    layout_height="fill",--布局高度
+    background=布局背景;--布局背景颜色(或者图片路径)
+    elevation="0dp",--阴影层次
+    id="适配器布局",
+
+    {
+
+      RecyclerView;
+      id="recycler_view";
+      layout_margin="8dp",
+      -- layout_marginRight="7dp",
+      layout_width='match_parent';
+      layout_height='wrap';
+      layoutManager=GridLayoutManager(activity,3);
+
+    },
+  },
+}
+
+--设置列表布局
+local list_item={
+  LinearLayout,
+  orientation='vertical';--横向或者纵向布局
+  layout_width='fill';--布局宽度
+  layout_height='wrap';--布局高度
+  background='';--布局背景颜色
+  {
+    LinearLayout,--线性布局
+    orientation='vertical',--方向
+    layout_width='fill',--宽度
+    layout_height='fill',--高度
+    background='',--背景颜色或图片路径
+    {
+      CardView;--卡片控件
+      layout_margin='8dp';--边距
+      layout_gravity='center';--重力
+      --左:left 右:right 中:center 顶:top 底:bottom
+      elevation='0dp';--阴影
+      layout_width='fill';--宽度
+      layout_height='wrap';--高度
+      CardBackgroundColor='#ffffffff';--颜色
+      radius='8dp';--圆角
+      {
+        ImageView;--图片控件
+        src='';--图片路径
+        layout_width='fill';--图片宽度
+        layout_height='wrap';--图片高度
+        --scaleType='fitXY';--图片显示类型
+        id="tp";
+      };
+      {
+        TextView;--文本控件
+        id="mz";
+        text='';--显示的文字
+        layout_width='fill';--文本宽度
+        layout_height='fill';--文本高度
+        textSize='20sp';--文字大小
+        gravity="center|bottom";
+        textColor="#ffffffff";
+        layout_marginBottom="10dp";
+      };
+      {
+        TextView;--文本控件
+        layout_width='0dp';--文本宽度
+        layout_height='0dp';--文本高度
+        gravity='center';--重力属性
+        layout_margin="0dp";
+        textColor='#ff000000';--文字颜色
+        text='';--显示的文字
+        id="lj";
+        --textSize='';--文字大小
+      };
+      --图片
+
+    };
+    --卡片
+
+  };
+  --线性
+}
+
+
+
+activity.setContentView(loadlayout(layout))
+
+
+activity.window.statusBarColor=Color.parseColor("#03DAC5")
+
+
+
+--设置布局管理器
+
+--设置线性列表布局
+recycler_view.layoutManager=LinearLayoutManager(activity)
+
+
+--recycler_view.layoutManager=GridLayoutManager(activity,3)--3为网格行数
+--recycler_view.layoutManager.setOrientation(1)--0是横向，1是竖向
+--网格列表视图
+
+recycler_view.layoutManager=StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL)--3为网格行数,可换HORIZONTAL
+--瀑布流列表视图
+
+
+local adapter=LuaRecyclerAdapter(activity,data,list_item)
+
+
+
+--设置适配器
+recycler_view.adapter=adapter
+
+
+import "android.util.Base64"
+import "java.lang.*"
+import "android.util.*"
+import "android.content.*"
+function encode(data)--编码
+  local Base64=luajava.bindClass("android.util.Base64")
+  return Base64.encodeToString(String(data).getBytes(),Base64.NO_WRAP);
+end
+
+function decode(data)--解码
+  local Base64=luajava.bindClass("android.util.Base64")
+  return String(Base64.decode(data,Base64.DEFAULT)).toString()
+end
+
+
+Http.get("https://wds.ecsxs.com/226571.json",function(code,content)
+  if code==200 then
+    名字=content:gmatch([[【名字】(.-)【名字】]])
+    图片=content:gmatch([[【图片】(.-)【图片】]])
+    链接=content:gmatch([[【链接】(.-)【链接】]])
+
+    内容表={}
+
+    for v in 名字 do
+      table.insert(内容表,v.."昔"..图片().."昔"..链接())
+    end
+
+    N=1
+    function loop()
+      if N <= #内容表 then
+        名字2=内容表[N]:match([[(.-)昔.-昔]])
+        图片2=内容表[N]:match([[.-昔(.-)昔]])
+        链接2=内容表[N]:match([[.-昔.-昔(.+)]])
+
+        Http.get("http://175.178.188.119/API/lanz.php?url="..图片2,function(code,content)
+          if code==200 then
+            local cjson=require"cjson"
+            local da=cjson.decode(content)
+            图片链接=da.data.url
+
+            adapter.add{
+              mz=decode(名字2),
+              tp=图片链接,
+              lj=链接2,
+              tplj=图片2
+            }
+
+            N=N+1
+            loop()
+          end
+
+        end)
+
+      end
+    end
+    loop()
+
+  end
+end)
+
+function 写入文件(路径,内容)
+  import "java.io.File"
+  f=File(tostring(File(tostring(路径)).getParentFile())).mkdirs()
+  io.open(tostring(路径),"w"):write(tostring(内容)):close()
+end
+
+
+adapter.onItemClick=function(
+  adapter,--适配器对象
+  itemView,--项目布局对象
+  view,--点击的控件对象
+  pos--点击的位置索引
+  )
+
+  local itemData = adapter.Data[pos+1]
+
+
+  链接=itemData.lj:match("(.+)密码")
+  密码=itemData.lj:match("密码: (.+)")
+  名字=itemData.mz
+  图片=itemData.tplj
+  --  print(链接)
+  value="A"..链接.."A".."B"..密码.."B"
+  -- 进入子页面("smmhyd",{value})
+--print(value)
+  进入子页面("smxzyd",{value})
+end
+
+
+tc.onClick=function()
+退出页面()
+end
+
+【远程代码】

@@ -264,7 +264,7 @@ function decode(data)--解码
 end
 
 
-Http.get("https://wds.ecsxs.com/226571.json",function(code,content)
+Http.get("https://zl-nine.vercel.app/xiezhenzhuye.txt",function(code,content)
   if code==200 then
     名字=content:gmatch([[【名字】(.-)【名字】]])
     图片=content:gmatch([[【图片】(.-)【图片】]])

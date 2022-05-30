@@ -1324,7 +1324,7 @@ adapter.onItemClick=function(
   )
   local itemData = adapter.Data[pos+1]
 
-  value="https://gv008.info"..itemData.lj
+  value=itemData.lj
   进入子页面("bfjx",{value})
 end
 

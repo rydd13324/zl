@@ -930,10 +930,10 @@ function indicatorUpdate(view, views)
     if i==view.getCurrentItem() then
       views[i].setVisibility(View.VISIBLE)
 
-      渐变(0xff87b6fe,0xff3487ff,views[i])--调用方法
+      渐变(0xFFF4A7B9,0xFFFCE8ED,views[i])--调用方法
      else
       --views[i].setVisibility(View.INVISIBLE)
-      渐变(0xff87b6fe,0xffffffff,views[i])--调用方法
+      渐变(0xFFF4A7B9,0xffffffff,views[i])--调用方法
     end
   end
 end

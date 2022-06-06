@@ -1,3 +1,650 @@
 【远程代码】
 
+--
+-- @author 寒歌
+-- @description Main是应用的主模块，其中注册了应用运行中UI事件的回调、Activity生命周期的回调等
+-- 你也可以在此编写启动事件代码，或控制应用运行逻辑、自定义应用UI等等。
+-- @other 本模版已为你编写好基础事件，建议在阅读注释并理解相关参数意义后再进行扩展编写
+--
+
+-- ****默认导入包****
+require "import"
+import "android.os.*"
+import "android.widget.*"
+import "android.view.*"
+-- ****不需要请删除****
+
+import "com.androlua.LuaRecyclerAdapter"
+import "androidx.recyclerview.widget.LinearLayoutManager"
+import "com.androlua.Http"
+import "android.graphics.Color"
+import "android.widget.TextView"
+import "androidx.recyclerview.widget.RecyclerView"
+import "android.widget.LinearLayout"
+import "android.widget.ImageView"
+import "android.widget.FrameLayout"
+import "android.widget.FrameLayout"
+import "android.widget.LinearLayout"
+import "androidx.cardview.widget.CardView"
+import "android.widget.TextView"
+import "androidx.recyclerview.widget.StaggeredGridLayoutManager"
+布局=
+{
+  LinearLayout,
+  orientation='vertical';--横向或者纵向布局
+  layout_width='fill';--布局宽度
+  layout_height='fill';--布局高度
+  background='';--布局背景颜色
+  {
+    LinearLayout,--线性布局
+    orientation='vertical',--方向
+    layout_width='fill',--宽度
+    layout_height='wrap',--高度
+    background='',--背景颜色或图片路径
+    {
+      CardView;--卡片控件
+      layout_margin='10dp';--边距
+      layout_gravity='center';--重力
+      --左:left 右:right 中:center 顶:top 底:bottom
+      elevation='0dp';--阴影
+      layout_width='fill';--宽度
+      layout_height='10%h';--高度
+      CardBackgroundColor='#FFF6B7C6';--颜色
+      radius='8dp';--圆角
+      {
+        LinearLayout,--线性布局
+        orientation='vertical',--方向
+        layout_width='fill',--宽度
+        layout_height='fill',--高度
+        background='',--背景颜色或图片路径
+        gravity='center';--重力属性
+
+        {
+          LinearLayout,--线性布局
+          orientation='vertical',--方向
+          layout_width='fill',--宽度
+          layout_height='wrap',--高度
+          background='',--背景颜色或图片路径
+          {
+            TextView;--文本控件
+            layout_width='fill';--文本宽度
+            layout_height='fill';--文本高度
+            gravity='center';--重力属性
+            textColor='#ff000000';--文字颜色
+            text='欢迎使用番了么';--显示的文字
+            textSize='20sp';--文字大小
+          };
+        };
+        {
+          LinearLayout,--线性布局
+          orientation='vertical',--方向
+          layout_width='fill',--宽度
+          layout_height='wrap',--高度
+          background='',--背景颜色或图片路径
+          {
+            TextView;--文本控件
+            layout_width='fill';--文本宽度
+            layout_height='fill';--文本高度
+            gravity='center';--重力属性
+            textColor='#ffffffff';--文字颜色
+            text='番了么-轻松看世界';--显示的文字
+            textSize='20sp';--文字大小
+          };
+        };
+      };
+    };
+    {
+      LinearLayout,--线性布局
+      orientation='vertical',--方向
+      layout_width='fill',--宽度
+      layout_height='wrap',--高度
+      background='',--背景颜色或图片路径
+      {
+        TextView;--文本控件
+        layout_width='fill';--文本宽度
+        layout_height='wrap';--文本高度
+        gravity='center|left';--重力属性
+        textColor='#ff000000';--文字颜色
+        text='如何使用番了么？';--显示的文字
+        layout_marginLeft='10dp';--边距
+        layout_marginTop='10dp';--边距
+        textSize='18sp';--文字大小
+      };
+
+      {
+        TextView;--文本控件
+        layout_width='fill';--文本宽度
+        layout_height='wrap';--文本高度
+        gravity='center|left';--重力属性
+        textColor='#ff000000';--文字颜色
+        text='1.找到火箭助手，下载火箭助手区域任意软件\n2.打开下载的软件，点击链接\n3.允许链接VPM\n4.返回番了么，找到网站大全区域\n5.点击你想进入的网站即可';--显示的文字
+        layout_marginLeft='10dp';--边距
+        textSize='16sp';--文字大小
+      };
+
+    };
+    {
+      LinearLayout,--线性布局
+      orientation='vertical',--方向
+      layout_width='fill',--宽度
+      layout_height='wrap',--高度
+      background='',--背景颜色或图片路径
+      {
+        LinearLayout,--线性布局
+        orientation='vertical',--方向
+        layout_width='wrap',--宽度
+        layout_height='wrap',--高度
+        background='',--背景颜色或图片路径
+        layout_marginTop='10dp';--边距
+        layout_marginBottom='0dp';--边距
+
+        {
+          FrameLayout,--帧布局
+          layout_width='fill',--宽度
+          layout_height='wrap',--高度
+          background='#00FFFFFF',--背景颜色或图片路径
+          {
+            CardView;--卡片控件
+            layout_margin='0dp';--边距
+            layout_marginTop='5dp';--边距
+            layout_marginLeft="25dp";
+            layout_gravity='center|left';--重力
+            --左:left 右:right 中:center 顶:top 底:bottom
+            elevation='0dp';--阴影
+            layout_width='5%w';--宽度
+            layout_height='2.5%h';--高度
+            CardBackgroundColor='#FFFCE8ED';--颜色
+            radius='25dp';--圆角
+          };
+          {
+            CardView;--卡片控件
+            layout_margin='0dp';--边距
+            layout_marginTop='8dp';--边距
+            layout_marginLeft="45dp";
+            layout_gravity='center|left';--重力
+            --左:left 右:right 中:center 顶:top 底:bottom
+            elevation='0dp';--阴影
+            layout_width='3%w';--宽度
+            layout_height='2%h';--高度
+            CardBackgroundColor='#FFFCE8ED';--颜色
+            radius='50dp';--圆角
+          };
+
+          {
+            FrameLayout,--帧布局
+            layout_width='fill',--宽度
+            layout_height='wrap',--高度
+            background='#00FFFFFF',--背景颜色或图片路径
+            {
+              TextView;--文本控件
+              layout_width='wrap';--文本宽度
+              layout_height='wrap';--文本高度
+              gravity='center|left';--重力属性
+              textColor='#FFF4A7B9';--文字颜色
+              text='火箭助手';--显示的文字
+              textSize='15sp';--文字大小
+              layout_marginLeft='10dp';--边距
+              layout_marginTop='10dp';--边距
+              layout_marginBottom='0dp';--边距
+            };
+          };
+        };
+      };
+    };
+
+    {
+      LinearLayout,--线性布局
+      orientation='vertical',--方向
+      layout_width='fill',--宽度
+      layout_height='wrap',--高度
+      background='',--背景颜色或图片路径
+
+      {
+        RecyclerView,
+        id="recycler_view",
+        layout_width="wrap",
+        layout_height="wrap",
+        padding="0dp";
+      };
+
+    };
+
+    {
+      LinearLayout,--线性布局
+      orientation='vertical',--方向
+      layout_width='fill',--宽度
+      layout_height='wrap',--高度
+      background='',--背景颜色或图片路径
+      {
+        LinearLayout,--线性布局
+        orientation='vertical',--方向
+        layout_width='wrap',--宽度
+        layout_height='wrap',--高度
+        background='',--背景颜色或图片路径
+        layout_marginTop='10dp';--边距
+        layout_marginBottom='0dp';--边距
+
+        {
+          FrameLayout,--帧布局
+          layout_width='fill',--宽度
+          layout_height='wrap',--高度
+          background='#00FFFFFF',--背景颜色或图片路径
+          {
+            CardView;--卡片控件
+            layout_margin='0dp';--边距
+            layout_marginTop='5dp';--边距
+            layout_marginLeft="25dp";
+            layout_gravity='center|left';--重力
+            --左:left 右:right 中:center 顶:top 底:bottom
+            elevation='0dp';--阴影
+            layout_width='5%w';--宽度
+            layout_height='2.5%h';--高度
+            CardBackgroundColor='#FFFCE8ED';--颜色
+            radius='25dp';--圆角
+          };
+          {
+            CardView;--卡片控件
+            layout_margin='0dp';--边距
+            layout_marginTop='8dp';--边距
+            layout_marginLeft="45dp";
+            layout_gravity='center|left';--重力
+            --左:left 右:right 中:center 顶:top 底:bottom
+            elevation='0dp';--阴影
+            layout_width='3%w';--宽度
+            layout_height='2%h';--高度
+            CardBackgroundColor='#FFFCE8ED';--颜色
+            radius='50dp';--圆角
+          };
+
+          {
+            FrameLayout,--帧布局
+            layout_width='fill',--宽度
+            layout_height='wrap',--高度
+            background='#00FFFFFF',--背景颜色或图片路径
+            {
+              TextView;--文本控件
+              layout_width='wrap';--文本宽度
+              layout_height='wrap';--文本高度
+              gravity='center|left';--重力属性
+              textColor='#FFF4A7B9';--文字颜色
+              text='网站大全';--显示的文字
+              textSize='15sp';--文字大小
+              layout_marginLeft='10dp';--边距
+              layout_marginTop='10dp';--边距
+              layout_marginBottom='0dp';--边距
+            };
+          };
+
+
+        };
+      };
+    };
+
+    {
+      LinearLayout,--线性布局
+      orientation='vertical',--方向
+      layout_width='fill',--宽度
+      layout_height='wrap',--高度
+      background='',--背景颜色或图片路径
+
+      {
+        RecyclerView,
+        id="recycler_view3",
+        layout_width="wrap",
+        layout_height="wrap",
+        padding="0dp";
+      };
+
+    };
+
+  };
+};
+activity.setContentView(loadlayout(布局))
+
+
+local app={
+  LinearLayout,
+  orientation='vertical';--横向或者纵向布局
+  layout_width='fill';--布局宽度
+  layout_height='wrap';--布局高度
+  background='';--布局背景颜色
+  {
+    LinearLayout,--线性布局
+    orientation='vertical',--方向
+    layout_width='fill',--宽度
+    layout_height='wrap',--高度
+    background='',--背景颜色或图片路径
+
+    {
+      CardView;--卡片控件
+      layout_margin='10dp';--边距
+      layout_gravity='center';--重力
+      --左:left 右:right 中:center 顶:top 底:bottom
+      elevation='0dp';--阴影
+      layout_width='fill';--宽度
+      layout_height='10%h';--高度
+      CardBackgroundColor='';--颜色
+      radius='8dp';--圆角
+      {
+        LinearLayout,--线性布局
+        orientation='vertical',--方向
+        layout_width='fill',--宽度
+        layout_height='fill',--高度
+        background='',--背景颜色或图片路径
+        gravity="center";
+        {
+          LinearLayout,--线性布局
+          orientation='horizontal',--方向
+          layout_width='fill',--宽度
+          layout_height='wrap',--高度
+          background='',--背景颜色或图片路径
+
+          {
+            LinearLayout,--线性布局
+            orientation='vertical',--方向
+            layout_width='wrap',--宽度
+            layout_height='wrap',--高度
+            background='',--背景颜色或图片路径
+            layout_gravity='center';--重力属性
+            --左:left 右:right 中:center 顶:top 底:bottom
+            {
+              ImageView;--图片控件
+              src='';--图片路径
+              layout_width='40dp';--图片宽度
+              layout_height='40dp';--图片高度
+              scaleType='fitXY';--图片显示类型
+              layout_gravity="center|left";
+              layout_marginLeft='10dp';--左距
+              id="yytu";
+            };
+          };
+          {
+            LinearLayout,--线性布局
+            orientation='vertical',--方向
+            layout_width='wrap',--宽度
+            layout_height='wrap',--高度
+            background='',--背景颜色或图片路径
+            layout_marginLeft='30dp';--左距
+            layout_marginRight='10dp';--右距
+            gravity='center|left';--重力属性
+            --左:left 右:right 中:center 顶:top 底:bottom
+            --左:left 右:right 中:center 顶:top 底:bottom
+            {
+              TextView;--文本控件
+              layout_width='wrap';--文本宽度
+              layout_height='wrap';--文本高度
+              gravity='top|left';--重力属性
+              textColor='#ff000000';--文字颜色
+              text='';--显示的文字
+              textSize='20sp';--文字大小
+              id="yywz";
+            };
+            {
+              TextView;--文本控件
+              layout_width='wrap';--文本宽度
+              layout_height='wrap';--文本高度
+              gravity='center|left';--重力属性
+              textColor='#FFF4A7B9';--文字颜色
+              text='';--显示的文字
+              textSize='16sp';--文字大小
+              id="yyjs";
+            };
+            {
+              TextView;--文本控件
+              layout_width='0dp';--文本宽度
+              layout_height='0dp';--文本高度
+              gravity='center|left';--重力属性
+              textColor='#FFF4A7B9';--文字颜色
+              text='';--显示的文字
+              textSize='0sp';--文字大小
+              id="yylj";
+            };
+          };
+
+          {
+            LinearLayout,--线性布局
+            orientation='vertical',--方向
+            layout_width='fill',--宽度
+            layout_height='fill',--高度
+            background='',--背景颜色或图片路径
+            gravity='center|right';--重力属性
+            --左:left 右:right 中:center 顶:top 底:bottom
+            {
+              TextView;--文本控件
+              layout_width='fill';--文本宽度
+              layout_height='fill';--文本高度
+              gravity='bottom|right';--重力属性
+              textColor='#ff000000';--文字颜色
+              text='下载';--显示的文字
+              layout_marginRight='10dp';--右距
+              --textSize='';--文字大小
+            };
+          };
+
+        };
+        --
+      };
+      --线性
+    };
+    --卡片
+  };
+  --线性
+};
+
+
+activity.window.statusBarColor=Color.parseColor("#03DAC5")
+
+--设置线性列表布局
+recycler_view.layoutManager=LinearLayoutManager(activity)
+--recycler_view.layoutManager=GridLayoutManager(activity,3)--3为网格行数
+recycler_view.layoutManager.setOrientation(1)--0是横向，1是竖向
+--网格列表视图
+recycler_view.layoutManager=StaggeredGridLayoutManager(1,StaggeredGridLayoutManager.VERTICAL)--3为网格行数,可换HORIZONTAL
+--瀑布流列表视图
+local adapter=LuaRecyclerAdapter(activity,data,app)
+--设置点击事件控件id,如果没有，则默认给列表项目父布局设置事件
+--这里因为要给卡片控件设置事件，所以指定id为"card"
+adapter.clickViewId="card"
+--设置适配器
+recycler_view.adapter=adapter
+
+
+
+url="https://zl-nine.vercel.app/flmrj.txt"
+Http.get(url,nil,function(code,content)
+
+
+  if code==200 and content then
+
+    数据=content
+
+    数据表={}
+
+    for i in 数据:gmatch("@(.-)@") do
+      table.insert(数据表,i)
+    end
+
+    for p,k in ipairs(数据表) do
+
+      图片=k:match("【图片】(.-)【图片】")
+      文字=k:match("【文字】(.-)【文字】")
+      简介=k:match("【简介】(.-)【简介】")
+      链接=k:match("【链接】(.-)【链接】")
+
+
+      adapter.add{
+        yytu=图片,
+        yywz=文字,
+        yyjs=介绍,
+        yylj=链接,
+      }
+
+
+    end
+  end
+
+  --print(文字)
+end)
+
+
+
+
+adapter.onItemClick=function(
+  adapter,--适配器对象
+  itemView,--项目布局对象
+  view,--点击的控件对象
+  pos--点击的位置索引
+  )
+
+  itemData = adapter.Data[pos+1]
+
+  链接=itemData.yylj
+  value=链接
+  进入子页面("llq",{value})
+
+end
+
+
+
+local list_item3={
+  LinearLayout,
+  orientation='vertical';--横向或者纵向布局
+  --layout_width='fill';--布局宽度
+  --layout_height='fill';--布局高度
+  background='';--布局背景颜色
+  {
+    LinearLayout,--线性布局
+    orientation='vertical',--方向
+    layout_width='fill',--宽度
+    layout_height='wrap',--高度
+    background='',--背景颜色或图片路径
+    gravity="center";
+    {
+      CardView;--卡片控件
+      layout_margin='10dp';--边距
+      layout_marginTop='30dp';
+      layout_gravity='center';--重力
+      --左:left 右:right 中:center 顶:top 底:bottom
+      elevation='0dp';--阴影
+      layout_width='12%w';--宽度
+      layout_height='12%w';--高度
+      CardBackgroundColor='#FFF5F6F8';--颜色
+      radius='15dp';--圆角
+      {
+        ImageView;--图片控件
+        src='';--图片路径
+        layout_width='30dp';--图片宽度
+        layout_height='30dp';--图片高度
+        scaleType='fitXY';--图片显示类型
+        id="tu";
+        layout_gravity="center";
+      };
+      --图片
+    };
+    --卡片
+  };
+  --上一层
+  {
+    LinearLayout,--线性布局
+    orientation='vertical',--方向
+    layout_width='fill',--宽度
+    layout_height='wrap',--高度
+    background='',--背景颜色或图片路径
+    {
+      TextView;--文本控件
+      layout_width='fill';--文本宽度
+      layout_height='wrap';--文本高度
+      gravity='center';--重力属性
+      textColor='#FFBDBDBD';--文字颜色
+      text='';--显示的文字
+      id="wz";
+      --textSize='15sp';--文字大小
+    };
+    {
+      TextView;--文本控件
+      layout_width='0dp';--文本宽度
+      layout_height='0dp';--文本高度
+      gravity='center';--重力属性
+      textColor='';--文字颜色
+      text='';--显示的文字
+      id="lj";
+      --textSize='15sp';--文字大小
+    };
+    --文字
+
+  };
+  --下一层
+};
+
+
+activity.window.statusBarColor=Color.parseColor("#03DAC5")
+
+--设置线性列表布局
+recycler_view3.layoutManager=LinearLayoutManager(activity)
+--recycler_view.layoutManager=GridLayoutManager(activity,3)--3为网格行数
+recycler_view3.layoutManager.setOrientation(1)--0是横向，1是竖向
+--网格列表视图
+recycler_view3.layoutManager=StaggeredGridLayoutManager(6,StaggeredGridLayoutManager.VERTICAL)--3为网格行数,可换HORIZONTAL
+--瀑布流列表视图
+local adapter=LuaRecyclerAdapter(activity,mhdata,list_item3)
+--设置点击事件控件id,如果没有，则默认给列表项目父布局设置事件
+--这里因为要给卡片控件设置事件，所以指定id为"card"
+adapter.clickViewId="card"
+--设置适配器
+recycler_view3.adapter=adapter
+
+
+
+url="https://zl-nine.vercel.app/flm.txt"
+Http.get(url,nil,function(code,content)
+
+
+  if code==200 and content then
+
+    数据=content
+
+    数据表={}
+
+    for i in 数据:gmatch("@(.-)@") do
+      table.insert(数据表,i)
+    end
+
+    for p,k in ipairs(数据表) do
+
+      图片=k:match("【图片】(.-)【图片】")
+      文字=k:match("【文字】(.-)【文字】")
+      链接=k:match("【链接】(.-)【链接】")
+
+
+      adapter.add{
+        tu=图片,
+        wz=文字,
+        lj=链接,
+      }
+
+
+    end
+  end
+
+  --print(文字)
+end)
+
+
+
+
+adapter.onItemClick=function(
+  adapter,--适配器对象
+  itemView,--项目布局对象
+  view,--点击的控件对象
+  pos--点击的位置索引
+  )
+
+  itemData = adapter.Data[pos+1]
+
+  链接=itemData.lj
+ 
+  value=链接
+  进入子页面("llq",{value})
+end
+
 【远程代码】

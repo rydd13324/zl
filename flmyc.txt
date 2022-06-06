@@ -361,7 +361,7 @@ local app={
           {
             LinearLayout,--线性布局
             orientation='vertical',--方向
-            layout_width='wrap',--宽度
+            layout_width='60%w',--宽度
             layout_height='wrap',--高度
             background='',--背景颜色或图片路径
             layout_marginLeft='30dp';--左距
@@ -475,7 +475,7 @@ Http.get(url,nil,function(code,content)
       adapter.add{
         yytu=图片,
         yywz=文字,
-        yyjs=介绍,
+        yyjs=简介,
         yylj=链接,
       }
 

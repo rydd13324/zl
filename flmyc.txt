@@ -35,6 +35,12 @@ import "androidx.recyclerview.widget.StaggeredGridLayoutManager"
   layout_width='fill';--布局宽度
   layout_height='fill';--布局高度
   background='';--布局背景颜色
+{
+  ScrollView;--纵向滑动控件
+  layout_width='fill';--布局宽度
+  layout_height='fill';--布局高度
+  verticalScrollBarEnabled=false;--隐藏纵向滑条
+  --overScrollMode=View.OVER_SCROLL_NEVER,--隐藏圆弧阴影
   {
     LinearLayout,--线性布局
     orientation='vertical',--方向
@@ -298,6 +304,7 @@ import "androidx.recyclerview.widget.StaggeredGridLayoutManager"
     };
 
   };
+};
 };
 activity.setContentView(loadlayout(布局))
 

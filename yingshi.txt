@@ -1,5 +1,5 @@
-【远程代码】
 
+【远程代码】
 --
 -- @author 寒歌
 -- @description Main是应用的主模块，其中注册了应用运行中UI事件的回调、Activity生命周期的回调等
@@ -21,7 +21,7 @@ import "android.graphics.Color"
 import "androidx.cardview.widget.CardView"
 
 import "android.widget.GridView"
-import"com.scwang.smartrefresh.layout.SmartRefreshLayout"
+--import"com.scwang.smartrefresh.layout.SmartRefreshLayout"
 import "com.androlua.LuaAdapter"
 import "androidx.recyclerview.widget.GridLayoutManager"
 import "androidx.viewpager.widget.ViewPager"
@@ -1285,7 +1285,7 @@ function 加载(page)
         if v:find("BOY STUDIO") then
          elseif v:find("女") then
          elseif v:find("姬") then
-elseif v:find("妇") then
+         elseif v:find("妇") then
          else
 
           名字=v:match('" alt="(.-)">'):gsub("【",""):gsub("】","")
@@ -1421,18 +1421,34 @@ Http.get(url,function(code,content)
       table.insert(总表,i)
     end
 
+
+
     for k,v in ipairs(总表) do
 
+
       类型=v:match('title="(.-)"')
-      链接=v:match('<a href="(.-)"')
-      数量=v:match('<small>(.-)</small>')
-      adapter.add{
 
-        wz=类型,
-        lj=链接
+      Http.get("https://www.mxnzp.com/api/convert/zh?content="..类型.."&type=2&app_id=iryv8mppim8krqzk&app_secret=SmNhN0UvK3dEVEh5Qkp6TWQyOUNIZz09",function(code,content)
 
-      }
+        if code==200 and content then
 
+          链接=v:match('<a href="(.-)"')
+          数量=v:match('<small>(.-)</small>')
+          adapter.add{
+
+            wz=content:match('convertContent":"(.-)"'),
+            lj=链接
+
+          }
+         else
+
+          adapter.add{
+
+            wz=类型,
+            lj=链接
+          }
+        end
+      end)
     end
   end
 
@@ -1500,30 +1516,30 @@ gm.getPaint().setFakeBoldText(true)
 
 
 xv.onClick=function()
- value="https://www.xvideos.com/gay"
- 进入子页面("zzhll",{value})   
-  end
+  value="https://www.xvideos.com/gay"
+  进入子页面("zzhll",{value})
+end
 
 ph.onClick=function()
- 
- value="https://cn.pornhub.com/gay/video/search?search=china"
- 进入子页面("zzhll",{value}) 
-  
-  end
+
+  value="https://cn.pornhub.com/gay/video/search?search=china"
+  进入子页面("zzhll",{value})
+
+end
 
 xm.onClick=function()
- 
- value="https://zh.xhamster.com/search/china?orientations=gay"
- 进入子页面("zzhll",{value}) 
-  
-  end
+
+  value="https://zh.xhamster.com/search/china?orientations=gay"
+  进入子页面("zzhll",{value})
+
+end
 
 gm.onClick=function()
- 
- value="https://www.gaymaletube.com/zh/cat/chinese"
- 进入子页面("zzhll",{value}) 
-  
-  end
+
+  value="https://www.gaymaletube.com/zh/cat/chinese"
+  进入子页面("zzhll",{value})
+
+end
 
 fx.onClick=function()
 
